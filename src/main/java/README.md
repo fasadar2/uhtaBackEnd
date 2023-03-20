@@ -6,7 +6,7 @@
 ## Методы сервера:
 ### Контроллеры controller:
 в классе имя которого заканчивается на Controller содержатся методы для работы RestApi эти классы вызывают методы из сервиса для выполнения определенных операций
-#### sendMailFileController:
+#### sendMailFileControlle:
 * SendFile() метод возвращает экземпляр класса requestModel
 вызывает метод sendPdfOnMail файла сервиса sendMailFileService, в случае успеха поле code класса requestModel содержит значение 1, а поле message "Отчет отправлен"
 
