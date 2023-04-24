@@ -1,9 +1,14 @@
 package com.example.uhta.model.requestModel;
 
-public class requestModel extends basicRequestModel{
-    public requestModel(int code, String message) {
-        super(code, message);
-    }
-    public requestModel(){}
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class requestModel {
+    private int code;
+    private String message;
 
 }
