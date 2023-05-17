@@ -15,7 +15,7 @@ public class createExcelService {
         try
         {
 //declare file name to be create
-            String filename = "D:\\uhtaPDF\\Отчет.xlsx";
+            String filename = "F:\\desktop\\uhta\\Отчет.xls";
 //creating an instance of HSSFWorkbook class
             HSSFWorkbook workbook = new HSSFWorkbook();
 //invoking creatSheet() method and passing the name of the sheet to be created
