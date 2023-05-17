@@ -3,6 +3,8 @@ package com.example.uhta.controller;
 import com.example.uhta.model.reciveModel.regularReportRecive;
 import com.example.uhta.model.requestModel.requestModel;
 import com.example.uhta.service.regularReportService;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.MediaType;
@@ -15,7 +17,8 @@ public class createReportController {
     @Autowired
     regularReportService regularReport;
     @PostMapping(path = "/regularReport",consumes = MediaType.APPLICATION_JSON_VALUE)
-    private requestModel CreateRportRegular(@RequestBody regularReportRecive recive ){
+
+    public requestModel CreateRportRegular(@RequestBody regularReportRecive recive ){
 
         try {
             regularReport.CreateRegularReport(recive.getEndDate(),recive.getStartDate());

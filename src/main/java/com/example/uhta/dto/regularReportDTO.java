@@ -5,16 +5,16 @@ import com.example.uhta.repos.ControllerResultRepos;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.Instant;
 import java.util.List;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Service
 public class regularReportDTO {
     @Autowired
     ControllerResultRepos controllerResultRepos;
     @Transactional
-public List<ControllerResult> CreateRegularReport(LocalDateTime endTime, LocalDateTime startTime){
-return controllerResultRepos.getControllerResultByEndTimeRange(endTime,startTime);
+public List<ControllerResult> CreateRegularReport(Instant endTime, Instant startTime){
+return controllerResultRepos.getControllerResultByEndTimeBetween(startTime,endTime);
 }
 }

@@ -1,4 +1,4 @@
-package com.example.uhta.entity.processDocResult;
+package com.example.uhta.configuration;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,53 +16,53 @@ import java.time.Instant;
 @Entity
 @Table(name = "CONTROLLERRESULTS")
 public class ControllerResult {
-    @Id
-    @Column(name = "\"RESULTID\"", nullable = false)
+@Id
+    @Column(name = "\"ResultID\"", nullable = false)
     private Integer resultID;
 
-    @Column(name = "\"PROJECT\"", length = 100)
+    @Column(name = "\"Project\"", length = 100)
     private String project;
 
-    @Column(name = "\"ANALYSIS\"", length = 100)
+    @Column(name = "\"Analysis\"", length = 100)
     private String analysis;
 
-    @Column(name = "\"OBJECTNAME\"", length = 50)
+    @Column(name = "\"ObjectName\"", length = 50)
     private String objectName;
 
-    @Column(name = "\"CONTROLLERID\"")
+    @Column(name = "\"ControllerID\"")
     private Integer controllerID;
 
-    @Column(name = "\"STARTTIME\"")
+    @Column(name = "\"StartTime\"")
     private Instant startTime;
 
     @Column(name = "\"ENDTIME\"")
     private Instant endTime;
 
-    @Column(name = "\"SAMPLESIZE\"")
+    @Column(name = "\"SampleSize\"")
     private Integer sampleSize;
 
-    @Column(name = "\"PERCENTSAT\"")
+    @Column(name = "\"PercentSat\"")
     private Double percentSat;
 
     @Column(name = "\"RPI\"")
     private Double rpi;
 
-    @Column(name = "\"OFFSET\"")
+    @Column(name = "\"Offset\"")
     private Double offset;
 
-    @Column(name = "\"STDERROR\"")
+    @Column(name = "\"StdError\"")
     private Double stdError;
 
-    @Column(name = "\"OSCILLATIONINDEX\"")
+    @Column(name = "\"OscillationIndex\"")
     private Double oscillationIndex;
 
-    @Column(name = "\"OSCILLATIONPERIOD\"")
+    @Column(name = "\"OscillationPeriod\"")
     private Double oscillationPeriod;
 
-    @Column(name = "\"SIGMAINDEX\"")
+    @Column(name = "\"SigmaIndex\"")
     private Double sigmaIndex;
 
-    @Column(name = "\"MCOH\"")
+    @Column(name = "\"mcoh\"")
     private Double mcoh;
 
     @Column(name = "\"XC\"")
@@ -71,88 +71,88 @@ public class ControllerResult {
     @Column(name = "\"PI\"")
     private Double pi;
 
-    @Column(name = "\"MEANPV\"")
+    @Column(name = "\"MeanPV\"")
     private Double meanPV;
 
     @Column(name = "\"SF\"")
     private Double sf;
 
-    @Column(name = "\"HIGHSATURATION\"")
+    @Column(name = "\"HighSaturation\"")
     private Double highSaturation;
 
-    @Column(name = "\"LOWSATURATION\"")
+    @Column(name = "\"LowSaturation\"")
     private Double lowSaturation;
 
-    @Column(name = "\"SAMPLINGTIME\"")
+    @Column(name = "\"SamplingTime\"")
     private Double samplingTime;
 
-    @Column(name = "\"MEANMV\"")
+    @Column(name = "\"MeanMV\"")
     private Double meanMV;
 
-    @Column(name = "\"STDMV\"")
+    @Column(name = "\"StdMV\"")
     private Double stdMV;
 
-    @Column(name = "\"STDPV\"")
+    @Column(name = "\"StdPV\"")
     private Double stdPV;
 
-    @Column(name = "\"SPMEAN\"")
+    @Column(name = "\"SPMean\"")
     private Double sPMean;
 
-    @Column(name = "\"SPSTDEV\"")
+    @Column(name = "\"SPStDev\"")
     private Double sPStDev;
 
-    @Column(name = "\"RISETIME\"")
+    @Column(name = "\"RiseTime\"")
     private Double riseTime;
 
-    @Column(name = "\"SETTLINGTIME\"")
+    @Column(name = "\"SettlingTime\"")
     private Double settlingTime;
 
-    @Column(name = "\"TIMEDELAY\"")
+    @Column(name = "\"TimeDelay\"")
     private Double timeDelay;
 
-    @Column(name = "\"COMPRESSIONFACTOR\"")
+    @Column(name = "\"CompressionFactor\"")
     private Double compressionFactor;
 
-    @Column(name = "\"VALVEINDEX\"")
+    @Column(name = "\"ValveIndex\"")
     private Double valveIndex;
 
     @Column(name = "\"ACTUALPOINTS\"")
     private Integer actualPoints;
 
-    @Column(name = "\"INGAP\"")
+    @Column(name = "\"InGap\"")
     private Double inGap;
 
     @Column(name = "\"NLI\"")
     private Double nli;
 
-    @Column(name = "\"STICTION\"")
+    @Column(name = "\"Stiction\"")
     private Double stiction;
 
-    @Column(name = "\"STICTIONCONFIDENCE\"")
+    @Column(name = "\"StictionConfidence\"")
     private Double stictionConfidence;
 
-    @Column(name = "\"ERRORDUETOSTICTION\"")
+    @Column(name = "\"ErrorDueToStiction\"")
     private Double errorDueToStiction;
 
-    @Column(name = "\"STICTIONTHRESHOLD\"")
+    @Column(name = "\"StictionThreshold\"")
     private Double stictionThreshold;
 
-    @Column(name = "\"WEIGHT\"")
+    @Column(name = "\"Weight\"")
     private Double weight;
 
-    @Column(name = "\"ECONOMICBENEFIT\"")
+    @Column(name = "\"EconomicBenefit\"")
     private Double economicBenefit;
 
-    @Column(name = "\"IMPULSERESPONSE\"")
+    @Column(name = "\"ImpulseResponse\"")
     private Integer impulseResponse;
 
-    @Column(name = "\"BENCHMARKIMPULSERESPONSE\"")
+    @Column(name = "\"BenchmarkImpulseResponse\"")
     private Integer benchmarkImpulseResponse;
 
-    @Column(name = "\"FREQUENCYRESPONSE\"")
+    @Column(name = "\"FrequencyResponse\"")
     private Integer frequencyResponse;
 
-    @Column(name = "\"BENCHMARKFREQUENCYRESPONSE\"")
+    @Column(name = "\"BenchmarkFrequencyResponse\"")
     private Integer benchmarkFrequencyResponse;
 
     @Column(name = "\"PVERR\"")
@@ -173,79 +173,79 @@ public class ControllerResult {
     @Column(name = "\"DIAGNOSISCOMMENT\"", length = 500)
     private String diagnosisComment;
 
-    @Column(name = "\"TUNINGDIAGNOSIS\"")
+    @Column(name = "\"TuningDiagnosis\"")
     private Integer tuningDiagnosis;
 
-    @Column(name = "\"MODES\"")
+    @Column(name = "\"Modes\"")
     private Integer modes;
 
-    @Column(name = "\"WASTUNED\"")
+    @Column(name = "\"WasTuned\"")
     private Boolean wasTuned;
 
     @Column(name = "\"IAE\"")
     private Double iae;
 
-    @Column(name = "\"FEEDFORWARDXC\"")
+    @Column(name = "\"FeedForwardXC\"")
     private Integer feedForwardXC;
 
-    @Column(name = "\"TUNINGPROPORTIONAL\"")
+    @Column(name = "\"TuningProportional\"")
     private Double tuningProportional;
 
-    @Column(name = "\"TUNINGINTEGRAL\"")
+    @Column(name = "\"TuningIntegral\"")
     private Double tuningIntegral;
 
-    @Column(name = "\"TUNINGDERIVATIVE\"")
+    @Column(name = "\"TuningDerivative\"")
     private Double tuningDerivative;
 
-    @Column(name = "\"TUNINGGAMMA\"")
+    @Column(name = "\"TuningGamma\"")
     private Double tuningGamma;
 
-    @Column(name = "\"TUNINGPVFILTER\"")
+    @Column(name = "\"TuningPVFilter\"")
     private Double tuningPVFilter;
 
-    @Column(name = "\"TUNINGCOMMENT\"", length = 500)
+    @Column(name = "\"TuningComment\"", length = 500)
     private String tuningComment;
 
-    @Column(name = "\"EFFECTIVESERVICEFACTOR\"")
+    @Column(name = "\"EffectiveServiceFactor\"")
     private Double effectiveServiceFactor;
 
-    @Column(name = "\"PERCENTDISPOSABLE\"")
+    @Column(name = "\"PercentDisposable\"")
     private Double percentDisposable;
 
-    @Column(name = "\"ERRORMESSAGE\"", length = 4000)
+    @Column(name = "\"ErrorMessage\"", length = 4000)
     private String errorMessage;
 
-    @Column(name = "\"NUMBEROFHOURSINDESIREDOPERATINGRANGE\"")
+    @Column(name = "\"NumberOfHoursInDesiredOperatingRange\"")
     private Double numberOfHoursInDesiredOperatingRange;
 
-    @Column(name = "\"NUMBEROFHOURSATOUTPUTLIMITS\"")
+    @Column(name = "\"NumberOfHoursAtOutputLimits\"")
     private Double numberOfHoursAtOutputLimits;
 
-    @Column(name = "\"MODECHANGES\"")
+    @Column(name = "\"ModeChanges\"")
     private Integer modeChanges;
 
-    @Column(name = "\"SPCHANGESINAUTOMATICMODE\"")
+    @Column(name = "\"SPChangesInAutomaticMode\"")
     private Integer sPChangesInAutomaticMode;
 
-    @Column(name = "\"OPCHANGESINMANUALMODE\"")
+    @Column(name = "\"OPChangesInManualMode\"")
     private Integer oPChangesInManualMode;
 
-    @Column(name = "\"PVMAX\"")
+    @Column(name = "\"PVMax\"")
     private Double pVMax;
 
-    @Column(name = "\"SPMAX\"")
+    @Column(name = "\"SPMax\"")
     private Double sPMax;
 
-    @Column(name = "\"OPMAX\"")
+    @Column(name = "\"OPMax\"")
     private Double oPMax;
 
-    @Column(name = "\"NUMBEROFHOURSINDESIREDOPRANGEPVWITHIN3PERCENT\"")
+    @Column(name = "\"NumberOfHoursInDesiredOPRangePVWithin3Percent\"")
     private Double numberOfHoursInDesiredOPRangePVWithin3Percent;
 
-    @Column(name = "\"PERCENTNOTREQUIRED\"")
+    @Column(name = "\"PercentNotRequired\"")
     private Double percentNotRequired;
 
-    @Column(name = "\"RECOMMENDEDSETTLINGTIME\"")
+    @Column(name = "\"RecommendedSettlingTime\"")
     private Double recommendedSettlingTime;
 
     @Column(name = "\"AAE\"")
@@ -254,76 +254,76 @@ public class ControllerResult {
     @Column(name = "\"SDAE\"")
     private Double sdae;
 
-    @Column(name = "\"INGAPTRANSITIONS\"")
+    @Column(name = "\"InGapTransitions\"")
     private Double inGapTransitions;
 
-    @Column(name = "\"PVOUTSIDELIMITS\"")
+    @Column(name = "\"PVOutsideLimits\"")
     private Double pVOutsideLimits;
 
-    @Column(name = "\"PERCENTAGEBADPV\"")
+    @Column(name = "\"PercentageBadPV\"")
     private Double percentageBadPV;
 
-    @Column(name = "\"BADPVSTATUS\"")
+    @Column(name = "\"BadPVStatus\"")
     private Integer badPVStatus;
 
-    @Column(name = "\"INSTRUMENTLOCATION\"", length = 501)
+    @Column(name = "\"InstrumentLocation\"", length = 501)
     private String instrumentLocation;
 
-    @Column(name = "\"PERCENTAGESELECTED\"")
+    @Column(name = "\"PercentageSelected\"")
     private Double percentageSelected;
 
-    @Column(name = "\"ISGAP\"")
+    @Column(name = "\"IsGap\"")
     private Integer isGap;
 
-    @Column(name = "\"ISFEEDFORWARD\"")
+    @Column(name = "\"IsFeedForward\"")
     private Integer isFeedForward;
 
-    @Column(name = "\"ISTUNING\"")
+    @Column(name = "\"IsTuning\"")
     private Integer isTuning;
 
-    @Column(name = "\"INSTRUMENTAVAILABILITY\"")
+    @Column(name = "\"InstrumentAvailability\"")
     private Double instrumentAvailability;
 
-    @Column(name = "\"PVOUTOFRANGE\"")
+    @Column(name = "\"PVOutOfRange\"")
     private Double pVOutOfRange;
 
-    @Column(name = "\"NOOFSPIKES\"")
+    @Column(name = "\"NoOfSpikes\"")
     private Double noOfSpikes;
 
-    @Column(name = "\"NOOFROCCHANGES\"")
+    @Column(name = "\"NoOfROCChanges\"")
     private Double noOfROCChanges;
 
-    @Column(name = "\"PVBIPLOT\"")
+    @Column(name = "\"PVBiplot\"")
     private Integer pVBiplot;
 
-    @Column(name = "\"OPBIPLOT\"")
+    @Column(name = "\"OPBiplot\"")
     private Integer oPBiplot;
 
-    @Column(name = "\"VALVEREVERSAL\"")
+    @Column(name = "\"ValveReversal\"")
     private Double valveReversal;
 
-    @Column(name = "\"RESETFILTEREDVALUES\"")
+    @Column(name = "\"ResetFilteredValues\"")
     private Boolean resetFilteredValues;
 
-    @Column(name = "\"FILTEREDSTICTION\"")
+    @Column(name = "\"FilteredStiction\"")
     private Double filteredStiction;
 
-    @Column(name = "\"FILTEREDOSI\"")
+    @Column(name = "\"FilteredOSI\"")
     private Double filteredOSI;
 
-    @Column(name = "\"FILTEREDPI\"")
+    @Column(name = "\"FilteredPI\"")
     private Double filteredPI;
 
-    @Column(name = "\"FILTEREDRPI\"")
+    @Column(name = "\"FilteredRPI\"")
     private Double filteredRPI;
 
-    @Column(name = "\"FILTEREDSECONDARYRPI\"")
+    @Column(name = "\"FilteredSecondaryRPI\"")
     private Double filteredSecondaryRPI;
 
-    @Column(name = "\"SECONDARYRPI\"")
+    @Column(name = "\"SecondaryRPI\"")
     private Double secondaryRPI;
 
-    @Column(name = "\"ISWRITTENTOPHD\"")
+    @Column(name = "\"IsWrittenToPHD\"")
     private Boolean isWrittenToPHD;
 
     @Column(name = "\"COV\"")

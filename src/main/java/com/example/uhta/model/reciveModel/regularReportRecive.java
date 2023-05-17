@@ -1,15 +1,15 @@
 package com.example.uhta.model.reciveModel;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class regularReportRecive {
     String startDate;
     String endDate;
+
+
 }
