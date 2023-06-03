@@ -3,7 +3,7 @@ package com.example.uhta.service;
 import com.example.uhta.dto.regularReportDTO;
 import com.example.uhta.entity.processDocResult.ControllerResult;
 import com.example.uhta.model.PdfModel;
-import org.hibernate.Length;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +36,7 @@ public class regularReportService {
 
 
     }
-    private List<PdfModel> CreateListPdfModel(List<ControllerResult> report){
+    public List<PdfModel> CreateListPdfModel(List<ControllerResult> report){
         List<PdfModel> pdfList = new ArrayList<>();
         for (ControllerResult result :report){
             List<String> desComment = new ArrayList<>();
@@ -77,7 +77,7 @@ public class regularReportService {
         }
         return pdfList;
     }
-    private Instant ParseToInstant(String time){
+    public Instant ParseToInstant(String time){
         String pattern = "yyyy-MM-dd HH:mm";
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(pattern);
         LocalDateTime localDateTime = LocalDateTime.parse(time, dateTimeFormatter);

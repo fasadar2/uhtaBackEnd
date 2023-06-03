@@ -8,6 +8,7 @@ class UhtaApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
