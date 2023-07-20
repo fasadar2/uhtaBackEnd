@@ -11,17 +11,17 @@ import java.util.List;
 @Getter
 @Builder
 public class PdfModel {
-    String Description;
-    String AssetType;
-    float weight;
-    float oscillationIndex;
-    float serviceFactor;
-    float effectiveServiceFactor;
-    LocalDateTime disspositionFlaggedDate;
-    LocalDateTime disspositionEntryDate;
-    String  disposition;
-    int weeksInCurrentDisposition;
-    List<String> dispositionComment;
+    private String name;
+    private String AssetType;
+    private float weight;
+    private float oscillationIndex;
+    private float serviceFactor;
+    private float effectiveServiceFactor;
+    private LocalDateTime disspositionFlaggedDate;
+    private LocalDateTime disspositionEntryDate;
+    private String  disposition;
+    private int weeksInCurrentDisposition;
+    private List<String> dispositionComment;
 
 
 }

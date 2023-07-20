@@ -26,7 +26,7 @@ public class createExcelService {
 
             for(int i = 0; i < pdf.size(); i++) {
                 HSSFRow hssfRow = sheet.createRow(i + 1);
-                hssfRow.createCell(0).setCellValue(pdf.get(i).getDescription());
+                hssfRow.createCell(0).setCellValue(pdf.get(i).getName());
                 hssfRow.createCell(1).setCellValue(pdf.get(i).getAssetType());
                 hssfRow.createCell(2).setCellValue(pdf.get(i).getWeight());
                 hssfRow.createCell(3).setCellValue(pdf.get(i).getOscillationIndex());

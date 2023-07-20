@@ -23,11 +23,15 @@ dependencies {
 	implementation "org.apache.pdfbox:preflight:2.0.0"
 	implementation "org.apache.pdfbox:pdfbox-tools:2.0.0"
 	implementation 'com.sun.mail:javax.mail:1.6.2'
+	implementation 'io.springfox:springfox-swagger2:3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 	implementation group: 'org.apache.poi', name: 'poi', version: '5.2.2'
 	implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
 	implementation 'javax.mail:javax.mail-api:1.6.2'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'junit:junit:4.13.1'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'junit:junit:4.13.1'
     runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compileOnly 'org.projectlombok:lombok:1.18.26'

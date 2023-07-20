@@ -2,7 +2,7 @@ package com.example.uhta;
 
 import com.example.uhta.controller.sendMailFileController;
 import com.example.uhta.dto.regularReportDTO;
-import com.example.uhta.entity.processDocResult.ControllerResult;
+import com.example.uhta.entity.processDocResult.ControllerResults;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -41,7 +41,7 @@ public class dtoTest {
     }
     @Test
     public void testDTO(){
-        List<ControllerResult> results = new ArrayList<>();
+        List<ControllerResults> results = new ArrayList<>();
         Assertions.assertInstanceOf(results.getClass(), reportDTO.CreateRegularReport(ParseToInstant("2023-02-01 00:00"),ParseToInstant("2023-02-01 00:00")));
     }
 

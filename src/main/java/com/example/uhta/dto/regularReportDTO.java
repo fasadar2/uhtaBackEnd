@@ -1,6 +1,6 @@
 package com.example.uhta.dto;
 
-import com.example.uhta.entity.processDocResult.ControllerResult;
+import com.example.uhta.entity.processDocResult.ControllerResults;
 import com.example.uhta.repos.ControllerResultRepos;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +13,8 @@ import java.util.List;
 public class regularReportDTO {
     @Autowired
     ControllerResultRepos controllerResultRepos;
-    @Transactional
-public List<ControllerResult> CreateRegularReport(Instant endTime, Instant startTime){
+    @Transactional("userTransactionManager")
+public List<ControllerResults> CreateRegularReport(Instant endTime, Instant startTime){
 return controllerResultRepos.getControllerResultByEndTimeBetween(startTime,endTime);
 }
 }

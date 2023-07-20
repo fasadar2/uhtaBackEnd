@@ -14,10 +14,11 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Table(name = "CONTROLLERRESULTS")
-public class ControllerResult {
+
+@Table()
+public class ControllerResults {
     @Id
-    @Column(name = "\"RESULTID\"", nullable = false)
+    @Column(name = "\"ResultID\"", nullable = false)
     private Integer resultID;
 
     @Column(name = "\"PROJECT\"", length = 100)
