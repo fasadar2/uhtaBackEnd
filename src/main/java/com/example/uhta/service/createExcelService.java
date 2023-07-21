@@ -39,7 +39,7 @@ public class createExcelService {
                 hssfRow.createCell(10).setCellValue(String.join("\n", pdf.get(i).getDispositionComment()));
             }
 
-            String filename = "F:/documents/Отчет.xls";
+            String filename = "Report.xls";
             FileOutputStream fileOut = new FileOutputStream(filename);
             workbook.write(fileOut);
             fileOut.close();

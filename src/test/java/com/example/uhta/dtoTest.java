@@ -1,7 +1,6 @@
 package com.example.uhta;
 
-import com.example.uhta.controller.sendMailFileController;
-import com.example.uhta.dto.regularReportDTO;
+import com.example.uhta.dto.RegularReportDTO;
 import com.example.uhta.entity.processDocResult.ControllerResults;
 
 import org.junit.Test;
@@ -24,7 +23,7 @@ import java.util.List;
 @SpringBootTest
 public class dtoTest {
     @Autowired
-    regularReportDTO reportDTO;
+    RegularReportDTO reportDTO;
     @Autowired
     sendMailFileController sendController;
     private Instant ParseToInstant(String time){

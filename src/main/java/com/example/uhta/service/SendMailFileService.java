@@ -6,16 +6,16 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Properties;
-import javax.mail.*;
-import javax.mail.internet.*;
 import javax.activation.*;
 @Service
-public class sendMailFileService {
-    public void SendPdfOnMail(String userSender,String passwordSender,String recipient)
+public class SendMailFileService {
+    public void SendPdfOnMail(List<String> emails)
     {
-        final String user=userSender; //Email address of sender
-        final String password=passwordSender;  //Password of the sender's email
+        final String user="createreport@mail.ru"; //Email address of sender
+        final String password="K1lnk2tJNhQDAa4TfsqX";  //Password of the sender's email
 
         //Get the session object
         Properties properties = System.getProperties();
@@ -28,21 +28,22 @@ public class sendMailFileService {
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(user,password);    }   });
-
+        for (String  email :emails){
         //Сборка и отправка сообщения
         try{
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress(recipient));
+            message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));
             message.setSubject("Message Aleart");
 
             //тело сообщения !!!не забудь поменять!!!
             BodyPart messageBodyPart1 = new MimeBodyPart();
-            messageBodyPart1.setText("This is message body");
+            LocalDate date = LocalDate.now();
+            messageBodyPart1.setText("Отчет от "+date.toString());
 
             //создание нового MimeBodyPart object и установка данных для объекта
             MimeBodyPart messageBodyPart2 = new MimeBodyPart();
-            String filename = "YourPDFFileName.pdf";// придумай что с этим сделать оставлять захардкодженное название негоже
+            String filename = ".\\Report.xls";// придумай что с этим сделать оставлять захардкодженное название негоже
             DataSource source = new FileDataSource(filename);
             messageBodyPart2.setDataHandler(new DataHandler(source));
             messageBodyPart2.setFileName(filename);
@@ -61,5 +62,6 @@ public class sendMailFileService {
 
         }catch (MessagingException ex) {ex.printStackTrace();}
     }
+}
 }
 

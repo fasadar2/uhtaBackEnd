@@ -1,9 +1,12 @@
 package com.example.uhta.service;
 
-import com.example.uhta.dto.regularReportDTO;
+import com.example.uhta.dto.RegularReportDTO;
 import com.example.uhta.entity.processDocResult.ControllerResults;
 import com.example.uhta.model.PdfModel;
 
+import com.example.uhta.model.reciveModel.regularReportRecive;
+import com.example.uhta.model.requestModel.AttributeModel;
+import com.example.uhta.model.requestModel.PlateModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,25 +21,41 @@ import java.util.List;
 @Service
 public class regularReportService {
     @Autowired
-    regularReportDTO reportDTO;
+    RegularReportDTO reportDTO;
     @Autowired
     createExcelService createPDF;
-    public void CreateRegularReport(String endDate, String startDate){
+    @Autowired
+    SendMailFileService sendMailFileService;
+    public void CreateRegularReport(regularReportRecive recive){
         try{
 
 
-            Instant endDateParsed = ParseToInstant(endDate);
-            Instant startDateParsed = ParseToInstant(startDate);
+            Instant endDateParsed = ParseToInstant(recive.getDateFinish());
+            Instant startDateParsed = ParseToInstant(recive.getDateStart());
             List<ControllerResults> report =  reportDTO.CreateRegularReport(endDateParsed, startDateParsed);
-            List<PdfModel> pdf = CreateListPdfModel(report);
+            List<PdfModel> pdf = CreateListPdfModel(report,recive.getAttributeModels(),recive.getPlateModels());
             createPDF.createSheet(pdf);
+
+            sendMailFileService.SendPdfOnMail(recive.getEmails());
         }catch (Exception e){
             e.printStackTrace();
         }
 
 
     }
-    public List<PdfModel> CreateListPdfModel(List<ControllerResults> report){
+    public List<PdfModel> CreateListPdfModel(
+            List<ControllerResults> report,
+            List<AttributeModel> attributeModels,
+
+            List<PlateModel>plateModels){
+        List<String> attributes = new ArrayList<>();
+        List<String> platesName = new ArrayList<>();
+        for (AttributeModel attributeModel :attributeModels){
+            attributes.add(attributeModel.getTitle());
+        }
+        for(PlateModel plateModel :plateModels){
+            platesName.add(plateModel.getTitle());
+        }
         List<PdfModel> pdfList = new ArrayList<>();
         for (ControllerResults result :report){
             List<String> desComment = new ArrayList<>();
@@ -69,12 +88,16 @@ public class regularReportService {
 
                     desComment.add(isk.getDiagnosisComment());
                 }
+            }if(platesName.contains(name))
+            {
+                if(attributes.contains("Weight"))pdf.setWeight(weight/count);
+                if(attributes.contains("OscillationIndex")) pdf.setOscillationIndex(osIndex/count);
+                if(attributes.contains("EffectiveServiceFactor")) pdf.setEffectiveServiceFactor(efService/count);
+                if(attributes.contains("DispositionComment")) pdf.setDispositionComment(desComment);
+                pdf.setName(name);
             }
-            pdf.setWeight(weight/count);
-            pdf.setOscillationIndex(osIndex/count);
-            pdf.setEffectiveServiceFactor(efService/count);
-            pdf.setDispositionComment(desComment);
-            pdf.setName(name);
+
+
             pdfList.add(pdf);
         }
         return pdfList;

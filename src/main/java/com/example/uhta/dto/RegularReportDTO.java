@@ -10,7 +10,7 @@ import java.time.Instant;
 import java.util.List;
 
 @Service
-public class regularReportDTO {
+public class RegularReportDTO {
     @Autowired
     ControllerResultRepos controllerResultRepos;
     @Transactional("userTransactionManager")
