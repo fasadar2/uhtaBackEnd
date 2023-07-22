@@ -1,12 +1,12 @@
 package com.example.uhta.service;
 
-import com.example.uhta.dto.RegularReportDTO;
 import com.example.uhta.entity.processDocResult.ControllerResults;
 import com.example.uhta.model.PdfModel;
 
-import com.example.uhta.model.reciveModel.regularReportRecive;
+import com.example.uhta.model.reciveModel.RegularReportRecive;
 import com.example.uhta.model.requestModel.AttributeModel;
 import com.example.uhta.model.requestModel.PlateModel;
+import com.example.uhta.repos.ControllerResultRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,20 +19,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class regularReportService {
+public class RegularReportService {
     @Autowired
-    RegularReportDTO reportDTO;
-    @Autowired
-    createExcelService createPDF;
+    CreateExcelService createPDF;
     @Autowired
     SendMailFileService sendMailFileService;
-    public void CreateRegularReport(regularReportRecive recive){
+    @Autowired
+    ControllerResultRepos controllerResultRepos;
+    public void CreateRegularReport(RegularReportRecive recive){
         try{
 
 
             Instant endDateParsed = ParseToInstant(recive.getDateFinish());
             Instant startDateParsed = ParseToInstant(recive.getDateStart());
-            List<ControllerResults> report =  reportDTO.CreateRegularReport(endDateParsed, startDateParsed);
+            List<ControllerResults> report =   controllerResultRepos.getControllerResultByEndTimeBetween(startDateParsed,endDateParsed);
             List<PdfModel> pdf = CreateListPdfModel(report,recive.getAttributeModels(),recive.getPlateModels());
             createPDF.createSheet(pdf);
 

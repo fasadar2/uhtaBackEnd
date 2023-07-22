@@ -1,6 +1,5 @@
 package com.example.uhta.model.reciveModel;
 
-import com.example.uhta.entity.uhtaDb.Attribute;
 import com.example.uhta.model.requestModel.AttributeModel;
 import com.example.uhta.model.requestModel.PlateModel;
 import lombok.*;
@@ -12,7 +11,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class regularReportRecive {
+public class RegularReportRecive {
     List<PlateModel> plateModels;
     List<AttributeModel> attributeModels;
     List<String> emails;

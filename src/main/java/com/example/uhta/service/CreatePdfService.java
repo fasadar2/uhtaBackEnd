@@ -8,13 +8,12 @@ import com.example.uhta.model.PdfModel;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.*;
-import org.apache.pdfbox.pdmodel.common.PDStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.springframework.stereotype.Service;
 
 @Service
 
-public class createPdfService {
+public class CreatePdfService {
     public  void createPDF(List<PdfModel> pdf) throws IOException
     {
         Date date = new Date();

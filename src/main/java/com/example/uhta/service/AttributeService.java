@@ -1,6 +1,5 @@
 package com.example.uhta.service;
 
-import com.example.uhta.dto.RegularReportDTO;
 import com.example.uhta.entity.processDocResult.ControllerResults;
 import com.example.uhta.entity.uhtaDb.Attribute;
 import com.example.uhta.model.requestModel.AttributeModel;
@@ -24,8 +23,6 @@ public class AttributeService {
     AttributeRepository attributeRepository;
     @Autowired
     ControllerResultRepos controllerResultRepos;
-    @Autowired
-    RegularReportDTO reportDTO;
     public List<AttributeModel> GetAllAttribute()
     {
         return attributeRepository.getAttributes().stream()
@@ -35,7 +32,7 @@ public class AttributeService {
     public List<PlateModel> GetAllPlates(){
         Instant endDateParsed = ParseToInstant("2023-02-10 00:00");
         Instant startDateParsed = ParseToInstant("2023-02-01 00:00");
-        return reportDTO.CreateRegularReport(endDateParsed, startDateParsed).stream().distinct()
+        return  controllerResultRepos.getControllerResultByEndTimeBetween(startDateParsed,endDateParsed).stream().distinct()
                 .map(this::ControllerResultToPlateModel)
                 .collect(Collectors.toList());
     }
