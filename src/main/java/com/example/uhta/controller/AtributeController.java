@@ -1,6 +1,6 @@
 package com.example.uhta.controller;
 
-import com.example.uhta.entity.processDocResult.ControllerResults;
+
 import com.example.uhta.model.requestModel.AttributeModel;
 import com.example.uhta.model.requestModel.PlateModel;
 import com.example.uhta.service.AttributeService;
@@ -23,7 +23,7 @@ public class AtributeController {
         return attributeService.GetAllAttribute();
     }
     @GetMapping(path = "/get-plates")
-    public List<ControllerResults> GetAllPlates(){
+    public List<PlateModel> GetAllPlates(){
         return attributeService.GetAllPlates();
     }
 }

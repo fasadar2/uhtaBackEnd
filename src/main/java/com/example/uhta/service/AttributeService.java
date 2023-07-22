@@ -1,5 +1,6 @@
 package com.example.uhta.service;
 
+import com.example.uhta.dto.RegularReportDTO;
 import com.example.uhta.entity.processDocResult.ControllerResults;
 import com.example.uhta.entity.uhtaDb.Attribute;
 import com.example.uhta.model.requestModel.AttributeModel;
@@ -9,6 +10,11 @@ import com.example.uhta.repos1.AttributeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,17 +24,20 @@ public class AttributeService {
     AttributeRepository attributeRepository;
     @Autowired
     ControllerResultRepos controllerResultRepos;
+    @Autowired
+    RegularReportDTO reportDTO;
     public List<AttributeModel> GetAllAttribute()
     {
         return attributeRepository.getAttributes().stream()
                 .map(this::AttributeToModel)
                 .collect(Collectors.toList());
     }
-    public List<ControllerResults> GetAllPlates(){
-//        return controllerResultRepos.getAll().stream()
-//                .map(this::ControllerResultToPlateModel)
-//                .collect(Collectors.toList());
-        return controllerResultRepos.getAll();
+    public List<PlateModel> GetAllPlates(){
+        Instant endDateParsed = ParseToInstant("2023-02-10 00:00");
+        Instant startDateParsed = ParseToInstant("2023-02-01 00:00");
+        return reportDTO.CreateRegularReport(endDateParsed, startDateParsed).stream().distinct()
+                .map(this::ControllerResultToPlateModel)
+                .collect(Collectors.toList());
     }
     private AttributeModel AttributeToModel(Attribute attribute){
         return AttributeModel.builder()
@@ -43,5 +52,13 @@ public class AttributeService {
                 .title(controllerResults.getObjectName())
                 .description("null")
                 .build();
+    }
+    public Instant ParseToInstant(String time){
+        String pattern = "yyyy-MM-dd HH:mm";
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(pattern);
+        LocalDateTime localDateTime = LocalDateTime.parse(time, dateTimeFormatter);
+        ZoneId zoneId = ZoneId.of("Africa/Addis_Ababa");
+        ZonedDateTime zonedDateTime = localDateTime.atZone(zoneId);
+        return zonedDateTime.toInstant();
     }
 }
