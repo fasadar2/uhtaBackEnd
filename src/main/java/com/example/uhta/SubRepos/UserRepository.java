@@ -1,4 +1,4 @@
-package com.example.uhta.repos1;
+package com.example.uhta.SubRepos;
 
 import com.example.uhta.entity.uhtaDb.User;
 import org.springframework.data.jpa.repository.JpaRepository;

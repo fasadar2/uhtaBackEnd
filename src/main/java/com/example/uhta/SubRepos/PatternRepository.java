@@ -1,4 +1,4 @@
-package com.example.uhta.repos1;
+package com.example.uhta.SubRepos;
 
 import com.example.uhta.entity.uhtaDb.Pattern;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,6 +9,5 @@ import java.util.List;
 
 @Repository
 public interface PatternRepository extends JpaRepository<Pattern, Integer> {
-@Query("SELECT p FROM Pattern p JOIN User u ON u.id = p.userID.id")
-List<Pattern> getPatterns();
+
 }

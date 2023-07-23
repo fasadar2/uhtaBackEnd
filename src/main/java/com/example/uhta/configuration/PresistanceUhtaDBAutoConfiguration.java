@@ -1,7 +1,6 @@
 package com.example.uhta.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -17,7 +16,7 @@ import java.util.HashMap;
 @Configuration
 @PropertySources({@PropertySource(value ="classpath:persistence-multiple-db-boot1.properties" )})
 @EnableJpaRepositories(
-        basePackages = "com.example.uhta.repos1",
+        basePackages = "com.example.uhta.SubRepos",
         entityManagerFactoryRef = "uhtaDbEntityManager",
         transactionManagerRef = "uhtaDbTransactionManager")
 public class PresistanceUhtaDBAutoConfiguration {

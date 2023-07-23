@@ -4,7 +4,7 @@ import com.example.uhta.entity.processDocResult.ControllerResults;
 import com.example.uhta.model.PdfModel;
 
 import com.example.uhta.model.reciveModel.RegularReportRecive;
-import com.example.uhta.repos.ControllerResultRepos;
+import com.example.uhta.LukoilRepos.ControllerResultRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

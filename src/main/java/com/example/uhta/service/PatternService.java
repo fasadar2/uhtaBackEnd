@@ -5,8 +5,8 @@ import com.example.uhta.entity.uhtaDb.Pattern;
 import com.example.uhta.model.reciveModel.PatternModel;
 import com.example.uhta.model.requestModel.PatternModelReq;
 
-import com.example.uhta.repos1.PatternRepository;
-import com.example.uhta.repos1.UserRepository;
+import com.example.uhta.SubRepos.PatternRepository;
+import com.example.uhta.SubRepos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
