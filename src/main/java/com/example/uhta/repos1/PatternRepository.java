@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface PatternRepository extends JpaRepository<Pattern, Integer> {
-@Query("SELECT p FROM Pattern p")
+@Query("SELECT p FROM Pattern p JOIN User u ON u.id = p.userID.id")
 List<Pattern> getPatterns();
 }

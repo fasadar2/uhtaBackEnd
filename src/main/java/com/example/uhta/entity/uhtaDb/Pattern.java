@@ -40,7 +40,7 @@ public class Pattern {
     @Column(name = "IsActive", nullable = false)
     private Boolean isActive = false;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "UserID", nullable = false)
     private User userID;

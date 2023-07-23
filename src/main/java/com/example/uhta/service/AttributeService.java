@@ -25,7 +25,7 @@ public class AttributeService {
     ControllerResultRepos controllerResultRepos;
     public List<AttributeModel> GetAllAttribute()
     {
-        return attributeRepository.getAttributes().stream()
+        return attributeRepository.findAll().stream()
                 .map(this::AttributeToModel)
                 .collect(Collectors.toList());
     }
