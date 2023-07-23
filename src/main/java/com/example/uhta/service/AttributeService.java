@@ -30,7 +30,7 @@ public class AttributeService {
                 .collect(Collectors.toList());
     }
     public List<PlateModel> GetAllPlates(){
-        Instant endDateParsed = ParseToInstant("2023-02-10 00:00");
+        Instant endDateParsed = Instant.now();
         Instant startDateParsed = ParseToInstant("2023-02-01 00:00");
         return  controllerResultRepos.getControllerResultByEndTimeBetween(startDateParsed,endDateParsed).stream().distinct()
                 .map(this::ControllerResultToPlateModel)
