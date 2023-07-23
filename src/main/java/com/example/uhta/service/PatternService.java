@@ -2,8 +2,6 @@ package com.example.uhta.service;
 
 
 import com.example.uhta.entity.uhtaDb.Pattern;
-import com.example.uhta.entity.uhtaDb.User;
-import com.example.uhta.model.UserModel;
 import com.example.uhta.model.reciveModel.PatternModel;
 import com.example.uhta.model.requestModel.PatternModelReq;
 
@@ -26,7 +24,7 @@ public class PatternService {
     UserRepository userRepository;
     public List<PatternModelReq> GetAllPattern(){
         return patternRepository.findAll().stream()
-                .map(this::PatternToPatternModel)
+                .map(ParserAndConvertor::PatternToPatternModel)
                 .collect(Collectors.toList());
     }
     public Pattern SetPattern(PatternModel model){
@@ -40,22 +38,5 @@ public class PatternService {
                 .build());
     }
 
-    private PatternModelReq PatternToPatternModel(Pattern pattern){
 
-        return PatternModelReq.builder()
-                .id(pattern.getId())
-                .desc(pattern.getDesc())
-                .name(pattern.getName())
-                .userID(UserToUserModel(pattern.getUserID()))
-                .dateOfCreate(pattern.getDateOfCreate())
-                .frequency(pattern.getFrequency())
-                .isActive(pattern.getIsActive())
-                .build();
-    }
-    private UserModel UserToUserModel(User user){
-        return UserModel.builder()
-                .id(user.getId())
-                .name(user.getFio())
-                .build();
-    }
 }
