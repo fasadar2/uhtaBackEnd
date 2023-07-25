@@ -20,7 +20,7 @@ public class Analysis {
     @Column(name = "AnalysisID", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "ProjectID", nullable = false)
     private Project projectID;
