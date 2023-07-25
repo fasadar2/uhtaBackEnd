@@ -6,7 +6,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Properties;
 import javax.activation.*;
@@ -14,55 +13,73 @@ import javax.activation.*;
 public class SendMailFileService {
     public void SendPdfOnMail(List<String> emails)
     {
-        final String user="createreport@mail.ru"; //Email address of sender
-        final String password="K1lnk2tJNhQDAa4TfsqX";  //Password of the sender's email
+        final String from = "createreport@mail.ru";
+        final String password = "kQb3DGd8bJEu6pmhcPdv";//K1lnk2tJNhQDAa4TfsqX
+        String host = "smtp.mail.ru";
 
-        //Get the session object
-        Properties properties = System.getProperties();
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "465");
+        props.put("mail.smtps.ssl.checkserveridentity", true);
+        props.put("mail.smtps.ssl.trust", "*");
+        props.put("mail.smtp.ssl.enable", "true");
 
-        //Here pass your smtp server url
-        properties.setProperty("mail.smtp.host","smtp.mail.ru");
-        properties.setProperty("mail.smtp.port", "465");
-        properties.put("mail.smtp.auth", "true");
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator(){
+                    protected PasswordAuthentication getPassAuth(){
+                        return new PasswordAuthentication(from, password);
+                    }
+                });
+for (String email :emails) {
+    try {
+        // Создание объекта MimeMessage по умолчанию
+        MimeMessage message = new MimeMessage(session);
 
-        Session session = Session.getDefaultInstance(properties,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(user,password);    }   });
-        for (String  email :emails){
-        //Сборка и отправка сообщения
-        try{
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(user));
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));
-            message.setSubject("Message Aleart");
+        // Установить От: поле заголовка
+        message.setFrom(new InternetAddress(from));
 
-            //тело сообщения !!!не забудь поменять!!!
-            BodyPart messageBodyPart1 = new MimeBodyPart();
-            LocalDate date = LocalDate.now();
-            messageBodyPart1.setText("Отчет от "+date.toString());
+        // Установить Кому: поле заголовка
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
 
-            //создание нового MimeBodyPart object и установка данных для объекта
-            MimeBodyPart messageBodyPart2 = new MimeBodyPart();
-            String filename = ".\\Report.xls";// придумай что с этим сделать оставлять захардкодженное название негоже
-            DataSource source = new FileDataSource(filename);
-            messageBodyPart2.setDataHandler(new DataHandler(source));
-            messageBodyPart2.setFileName(filename);
+        // Установить тему: поле заголовка
+        message.setSubject("Отчет ");
 
-            //Создание объекта сообщения
-            Multipart multipart = new MimeMultipart();
-            multipart.addBodyPart(messageBodyPart1);
-            multipart.addBodyPart(messageBodyPart2);
+        // Создание части сообщения
+        BodyPart messageBodyPart = new MimeBodyPart();
 
-            //Сборка сообщения
-            message.setContent(multipart );
+        // Заполнение сообщения
+        messageBodyPart.setText("По вашему запросу был сформирован отчет");
 
-            //Отправка сообщения
-            Transport.send(message);
-            //System.out.println("message sent....");
+        // Создание составного сообщения
+        Multipart multipart = new MimeMultipart();
 
-        }catch (MessagingException ex) {ex.printStackTrace();}
+        // Установить часть текстового сообщения
+        multipart.addBodyPart(messageBodyPart);
+
+        // Часть вторая вложения
+        messageBodyPart = new MimeBodyPart();
+        String filename = ".\\Report.xls";
+        DataSource source = new FileDataSource(filename);
+        messageBodyPart.setDataHandler(new DataHandler(source));
+        messageBodyPart.setFileName(filename);
+        multipart.addBodyPart(messageBodyPart);
+
+        // Отправить полные части сообщения
+        message.setContent(multipart);
+
+        // Отправить сообщение
+        try {
+            Transport.send(message, from, password);
+        } catch (javax.mail.SendFailedException sendFailedException) {
+        }
+        System.out.println("Сообщение успешно отправлено.... на почту "+email);
+    } catch (MessagingException mex) {
+        mex.printStackTrace();
     }
 }
-}
+    }
+    }
+
 
