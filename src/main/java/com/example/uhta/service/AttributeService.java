@@ -5,6 +5,7 @@ import com.example.uhta.model.requestModel.AttributeModel;
 import com.example.uhta.model.requestModel.PlateModel;
 import com.example.uhta.LukoilRepos.ControllerResultRepos;
 import com.example.uhta.SubRepos.AttributeRepository;
+import com.example.uhta.processDocRepos.AnalysisCastomRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class AttributeService {
     @Autowired
     ControllerResultRepos controllerResultRepos;
     @Autowired
-    ControllerResultCustom controllerResultCustom;
+    AnalysisCastomRepos analysisCastomRepos;
 
     public List<AttributeModel> GetAllAttribute()
     {
@@ -28,7 +29,7 @@ public class AttributeService {
                 .collect(Collectors.toList());
     }
     public List<PlateModel> GetAllPlates(){
-        return  controllerResultCustom.GetPlates();
+        return  analysisCastomRepos.GetPlates();
     }
 
 

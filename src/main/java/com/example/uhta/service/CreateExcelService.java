@@ -27,8 +27,7 @@ public class CreateExcelService {
                 // TODO: Сделать notNull
                 HSSFRow hssfRow = sheet.createRow(i + 1);
                 hssfRow.createCell(0).setCellValue(pdf.get(i).getName());
-                if(pdf.get(i).getAttributesContains().contains("AssetType"))
-                    hssfRow.createCell(1).setCellValue(pdf.get(i).getAssetType());
+                hssfRow.createCell(1).setCellValue(pdf.get(i).getAssetType());
                 if(pdf.get(i).getAttributesContains().contains("Weight"))
                     hssfRow.createCell(2).setCellValue(pdf.get(i).getWeight());
                 if(pdf.get(i).getAttributesContains().contains("OscillationIndex"))

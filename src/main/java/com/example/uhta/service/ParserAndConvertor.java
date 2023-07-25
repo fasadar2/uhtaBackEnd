@@ -1,5 +1,6 @@
 package com.example.uhta.service;
 
+import com.example.uhta.entity.processDoc.Analysis;
 import com.example.uhta.entity.processDocResult.ControllerResults;
 import com.example.uhta.entity.uhtaDb.Attribute;
 import com.example.uhta.entity.uhtaDb.Pattern;
@@ -37,8 +38,8 @@ public class ParserAndConvertor {
                 .description(attribute.getDescription())
                 .build();
     }
-    public  PlateModel ControllerResultToPlateModel(ControllerResults controllerResults){
-        String title = controllerResults.getAnalysis()
+    public  PlateModel AnalysisToPlateModel(Analysis analysis){
+        String title = analysis.getName()
                 .substring(11);
         title = title.substring(0, (title.length() - 1) / 2 );
         return PlateModel.builder()
@@ -134,6 +135,7 @@ public class ParserAndConvertor {
                     pdf.setDispositionComment(desComment);
                     attributeContains.add("DispositionComment");
                 }
+                pdf.setAssetType(result.getAnalysis());
                 pdf.setName(name);
             }
             pdf.setAttributesContains(attributeContains);
