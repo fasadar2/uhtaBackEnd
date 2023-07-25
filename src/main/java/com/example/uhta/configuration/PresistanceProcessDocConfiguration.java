@@ -32,7 +32,7 @@ public class PresistanceProcessDocConfiguration {
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(processDocDataSource());
         em.setPackagesToScan(
-                new String[] { "com.example.uhta.entity.uhtaDb" });
+                new String[] { "com.example.uhta.entity.processDoc" });
 
         HibernateJpaVendorAdapter vendorAdapter
                 = new HibernateJpaVendorAdapter();
@@ -57,7 +57,7 @@ public class PresistanceProcessDocConfiguration {
                 = new DriverManagerDataSource();
         dataSource.setDriverClassName(
                 env.getProperty("spring.datasource.driverClassName"));
-        dataSource.setUrl(env.getProperty("uhtaDb.url"));
+        dataSource.setUrl(env.getProperty("ProcessDoc.url"));
         dataSource.setUsername(env.getProperty("spring.datasource.username"));
         dataSource.setPassword(env.getProperty("spring.datasource.password"));
         return dataSource;

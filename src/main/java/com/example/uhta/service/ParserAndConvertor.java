@@ -43,7 +43,7 @@ public class ParserAndConvertor {
                 .substring(11);
         title = title.substring(0, (title.length() - 1) / 2 );
         return PlateModel.builder()
-                .id(0)
+                .id(analysis.getProjectID().getId())
                 .title(title)
                 .description("null")
                 .build();

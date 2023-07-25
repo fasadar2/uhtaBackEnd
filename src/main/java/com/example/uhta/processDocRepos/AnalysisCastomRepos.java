@@ -25,8 +25,7 @@ public class AnalysisCastomRepos {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Analysis> cq = cb.createQuery(Analysis.class);
         Root<Analysis> analysisRoot = cq.from(Analysis.class);
-        Predicate projectIdPredicate = cb.equal(analysisRoot.get("ProjectID"),15);
-        cq.where(projectIdPredicate);
+        cq.select(analysisRoot).distinct(true);
         List<Analysis> tupleResult = entityManager.createQuery(cq).getResultList();
 
         return tupleResult.stream()

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,12 @@ public class AttributeService {
                 .collect(Collectors.toList());
     }
     public List<PlateModel> GetAllPlates(){
-        return  analysisCastomRepos.GetPlates();
+        List<PlateModel> plateModelList = new ArrayList<>();
+        List<PlateModel> plateModels = analysisCastomRepos.GetPlates();
+        for (PlateModel plateModel :plateModels){
+            if (plateModel.getId() == 15) plateModelList.add(plateModel);
+        }
+        return plateModelList;
     }
 
 
