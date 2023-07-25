@@ -63,12 +63,7 @@ public class ParserAndConvertor {
                 .name(user.getFio())
                 .build();
     }
-    public UserModelRecive UserToUserModelRecive(User user){
-        return UserModelRecive.builder()
-                .login(user.getLogin())
-                .password(user.getPassword())
-                .build();
-    }
+
     public List<PdfModel> RegularReportToPdfModel(
             List<ControllerResults> report,
             List<AttributeModel> attributeModels,

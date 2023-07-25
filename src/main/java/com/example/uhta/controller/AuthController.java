@@ -1,5 +1,6 @@
 package com.example.uhta.controller;
 
+import com.example.uhta.entity.uhtaDb.User;
 import com.example.uhta.model.reciveModel.RegularReportRecive;
 import com.example.uhta.model.reciveModel.UserModelRecive;
 import com.example.uhta.model.requestModel.requestModel;
@@ -16,7 +17,7 @@ public class AuthController {
     @Autowired
     AuthService authService;
     @PostMapping(path = "/signup",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public UserModelRecive CreateReportRegular(@RequestBody UserModelRecive recive ){
+    public User CreateReportRegular(@RequestBody UserModelRecive recive ){
 
         return authService.Auth(recive);
 
