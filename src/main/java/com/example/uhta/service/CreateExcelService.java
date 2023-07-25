@@ -33,11 +33,12 @@ public class CreateExcelService {
                 hssfRow.createCell(3).setCellValue(pdf.get(i).getOscillationIndex());
                 hssfRow.createCell(4).setCellValue(pdf.get(i).getServiceFactor());
                 hssfRow.createCell(5).setCellValue(pdf.get(i).getEffectiveServiceFactor());
-                hssfRow.createCell(6).setCellValue(pdf.get(i).getDisspositionFlaggedDate());
+                hssfRow.createCell(6).setCellValue(pdf.get(i).getDisspositionFlaggedDate());//category ? categoryToDto(exercise.getCategory()) : null
                 hssfRow.createCell(7).setCellValue(pdf.get(i).getDisspositionEntryDate());
                 hssfRow.createCell(8).setCellValue(pdf.get(i).getDisposition());
                 hssfRow.createCell(9).setCellValue(pdf.get(i).getWeeksInCurrentDisposition());
-                hssfRow.createCell(10).setCellValue(String.join("\n", pdf.get(i).getDispositionComment()));
+                if (pdf.get(i).getDispositionComment() != null)hssfRow.createCell(10).setCellValue(String.join("\n", pdf.get(i).getDispositionComment()));
+
             }
 
             String filename = "Report.xls";
