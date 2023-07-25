@@ -21,7 +21,8 @@ public class SendMailFileService {
         Properties properties = System.getProperties();
 
         //Here pass your smtp server url
-        properties.setProperty("mail.smtp.host", "mail.javatpoint.com");
+        properties.setProperty("mail.smtp.host","smtp.mail.ru");
+        properties.setProperty("mail.smtp.port", "465");
         properties.put("mail.smtp.auth", "true");
 
         Session session = Session.getDefaultInstance(properties,

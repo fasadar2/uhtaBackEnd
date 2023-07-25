@@ -38,9 +38,11 @@ public class ParserAndConvertor {
                 .build();
     }
     public  PlateModel ControllerResultToPlateModel(ControllerResults controllerResults){
+        String title = controllerResults.getAnalysis()
+                .substring(10);
         return PlateModel.builder()
                 .id(controllerResults.getControllerID())
-                .title(controllerResults.getObjectName())
+                .title(title.substring(-1/2))
                 .description("null")
                 .build();
     }
@@ -84,7 +86,11 @@ public class ParserAndConvertor {
             float efService = 0;
             PdfModel pdf = new PdfModel();
             int resId = result.getControllerID();
-            String name = result.getAnalysis();
+            String title = result.getAnalysis()
+                    .substring(10);
+            String plateName = title.substring(-1/2);
+
+            String name = result.getObjectName();
             int count = 0;
             for (ControllerResults isk :report){
                 if(resId == isk.getControllerID()){
@@ -108,7 +114,7 @@ public class ParserAndConvertor {
 
                     desComment.add(isk.getDiagnosisComment());
                 }
-            }if(platesName.contains(name))
+            }if(platesName.contains(plateName))
             {
                 if(attributes.contains("Weight"))
                 {
