@@ -28,6 +28,7 @@ public class PatternService {
                 .collect(Collectors.toList());
     }
     public Pattern SetPattern(PatternModel model){
+        System.out.println("Setpattern");
         return patternRepository.save(Pattern.builder()
                 .userID(userRepository.getUserById(model.getUser().getId()))
                 .isActive(model.getIsActive())

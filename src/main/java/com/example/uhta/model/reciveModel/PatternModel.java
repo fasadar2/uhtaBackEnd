@@ -3,6 +3,7 @@ package com.example.uhta.model.reciveModel;
 
 import com.example.uhta.model.UserModel;
 import com.example.uhta.model.requestModel.AttributeModel;
+import com.example.uhta.model.requestModel.PlateModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,5 +25,6 @@ public class PatternModel {
     private Boolean isActive;
 
     private List<AttributeModel> attributes;
+    private List<PlateModel> plates;
 
 }

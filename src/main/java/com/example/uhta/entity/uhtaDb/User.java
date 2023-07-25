@@ -14,7 +14,7 @@ import org.hibernate.annotations.Nationalized;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "UserID", nullable = false)
     private Integer id;
 
     @Nationalized

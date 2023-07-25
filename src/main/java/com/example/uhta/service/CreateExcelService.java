@@ -25,6 +25,7 @@ public class CreateExcelService {
                 rowHeads.createCell(i).setCellValue(fields[i].getName());
 
             for(int i = 0; i < pdf.size(); i++) {
+                // TODO: Сделать notNull
                 HSSFRow hssfRow = sheet.createRow(i + 1);
                 hssfRow.createCell(0).setCellValue(pdf.get(i).getName());
                 hssfRow.createCell(1).setCellValue(pdf.get(i).getAssetType());

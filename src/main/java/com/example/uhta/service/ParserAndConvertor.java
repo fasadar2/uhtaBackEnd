@@ -50,7 +50,7 @@ public class ParserAndConvertor {
         return PatternModelReq.builder()
                 .id(pattern.getId())
                 .desc(pattern.getDesc())
-                .name(pattern.getName())
+                .title(pattern.getName())
                 .userID(UserToUserModel(pattern.getUserID()))
                 .dateOfCreate(pattern.getDateOfCreate())
                 .frequency(pattern.getFrequency())

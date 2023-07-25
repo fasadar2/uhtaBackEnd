@@ -26,7 +26,7 @@ public class RegularReportService {
             Instant endDateParsed = ParserAndConvertor.ParseToInstant(recive.getDateFinish());
             Instant startDateParsed =ParserAndConvertor.ParseToInstant(recive.getDateStart());
             List<ControllerResults> report =   controllerResultRepos.getControllerResultByEndTimeBetween(startDateParsed,endDateParsed);
-            List<PdfModel> pdf = ParserAndConvertor.RegularReportToPdfModel(report,recive.getAttributeModels(),recive.getPlateModels());
+            List<PdfModel> pdf = ParserAndConvertor.RegularReportToPdfModel(report,recive.getAttributes(),recive.getPlates());
             createPDF.createSheet(pdf);
 
             sendMailFileService.SendPdfOnMail(recive.getEmails());

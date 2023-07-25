@@ -20,29 +20,32 @@ import java.util.List;
 @RestControllerAdvice
 @Tag(name = "PatternApi")
 public class PatternController {
-    @Autowired
-    PatternService patternService;
-    @Autowired
-    RegularReportService regularReport;
+	@Autowired
+	PatternService patternService;
+	@Autowired
+	RegularReportService regularReport;
 
-    @GetMapping(path = "get-patterns")
-    public List<PatternModelReq> GetAllPatterns(){
-        return patternService.GetAllPattern();
-    }
-    @PostMapping(path = "/add-pattern",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Pattern SetPattern(@RequestBody PatternModel patternModel){
+	@GetMapping(path = "get-patterns")
+	public List<PatternModelReq> GetAllPatterns() {
+		var patterns = patternService.GetAllPattern();
+		return patterns;
+	}
 
-        return patternService.SetPattern(patternModel);
-    }
-    @PostMapping(path = "/report",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public requestModel CreateReportRegular(@RequestBody RegularReportRecive recive ){
+	@PostMapping(path = "/add-pattern", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Pattern SetPattern(@RequestBody PatternModel patternModel) {
+		System.out.println("Addpattern");
 
-        try {
-            regularReport.CreateRegularReport(recive);
-            return new requestModel(1,"Отчет успешно создан");
-        }catch (Exception e){
-            return new requestModel(0,e.getMessage());
-        }
+		return patternService.SetPattern(patternModel);
+	}
 
-    }
+	@PostMapping(path = "/report", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public requestModel CreateReportRegular(@RequestBody RegularReportRecive recive) {
+		try {
+			regularReport.CreateRegularReport(recive);
+			return new requestModel(1, "Отчет успешно создан");
+		} catch(Exception e) {
+			return new requestModel(0, e.getMessage());
+		}
+
+	}
 }

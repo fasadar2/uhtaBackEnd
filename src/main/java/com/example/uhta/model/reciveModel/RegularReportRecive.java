@@ -12,11 +12,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegularReportRecive {
-    List<PlateModel> plateModels;
-    List<AttributeModel> attributeModels;
+    List<PlateModel> plates;
+    List<AttributeModel> attributes;
     List<String> emails;
     String dateStart;
     String dateFinish;
-
-
 }

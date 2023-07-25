@@ -18,7 +18,7 @@ import java.time.LocalDate;
 public class Pattern {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "PatternID", nullable = false)
     private Integer id;
 
     @Nationalized
