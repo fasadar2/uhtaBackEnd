@@ -87,9 +87,9 @@ public class ParserAndConvertor {
             float efService = 0;
             PdfModel pdf = new PdfModel();
             int resId = result.getControllerID();
-            String title = result.getAnalysis()
-                    .substring(10);
-            String plateName = title.substring(-1/2);
+            String plateName = result.getAnalysis()
+                    .substring(11);
+            plateName = plateName.substring(0, (plateName.length() - 1) / 2 );
 
             String name = result.getObjectName();
             int count = 0;
