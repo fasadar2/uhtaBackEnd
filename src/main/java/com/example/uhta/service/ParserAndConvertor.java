@@ -6,7 +6,6 @@ import com.example.uhta.entity.uhtaDb.Pattern;
 import com.example.uhta.entity.uhtaDb.User;
 import com.example.uhta.model.PdfModel;
 import com.example.uhta.model.UserModel;
-import com.example.uhta.model.reciveModel.UserModelRecive;
 import com.example.uhta.model.requestModel.AttributeModel;
 import com.example.uhta.model.requestModel.PatternModelReq;
 import com.example.uhta.model.requestModel.PlateModel;
@@ -67,9 +66,9 @@ public class ParserAndConvertor {
     public List<PdfModel> RegularReportToPdfModel(
             List<ControllerResults> report,
             List<AttributeModel> attributeModels,
-
             List<PlateModel>plateModels){
         List<String> attributes = new ArrayList<>();
+        List<String> attributeContains = new ArrayList<>();
         List<String> platesName = new ArrayList<>();
         for (AttributeModel attributeModel :attributeModels){
             attributes.add(attributeModel.getTitle());
@@ -111,13 +110,26 @@ public class ParserAndConvertor {
                 }
             }if(platesName.contains(name))
             {
-                if(attributes.contains("Weight"))pdf.setWeight(weight/count);
-                if(attributes.contains("OscillationIndex")) pdf.setOscillationIndex(osIndex/count);
-                if(attributes.contains("EffectiveServiceFactor")) pdf.setEffectiveServiceFactor(efService/count);
-                if(attributes.contains("DispositionComment")) pdf.setDispositionComment(desComment);
+                if(attributes.contains("Weight"))
+                {
+                    pdf.setWeight(weight/count);
+                    attributeContains.add("Weight");
+                }
+                if(attributes.contains("OscillationIndex")){
+                    pdf.setOscillationIndex(osIndex/count);
+                    attributeContains.add("OscillationIndex");
+                }
+                if(attributes.contains("EffectiveServiceFactor")) {
+                    pdf.setEffectiveServiceFactor(efService / count);
+                    attributeContains.add("EffectiveServiceFactor");
+                }
+                if(attributes.contains("DispositionComment")) {
+                    pdf.setDispositionComment(desComment);
+                    attributeContains.add("DispositionComment");
+                }
                 pdf.setName(name);
             }
-
+            pdf.setAttributesContains(attributeContains);
 
             pdfList.add(pdf);
         }

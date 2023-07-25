@@ -22,6 +22,7 @@ public class PdfModel {
     private String  disposition;
     private int weeksInCurrentDisposition;
     private List<String> dispositionComment;
+    private List<String> attributesContains;
 
 
 }

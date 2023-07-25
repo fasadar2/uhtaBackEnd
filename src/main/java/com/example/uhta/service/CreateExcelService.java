@@ -28,16 +28,26 @@ public class CreateExcelService {
                 // TODO: Сделать notNull
                 HSSFRow hssfRow = sheet.createRow(i + 1);
                 hssfRow.createCell(0).setCellValue(pdf.get(i).getName());
-                hssfRow.createCell(1).setCellValue(pdf.get(i).getAssetType());
-                hssfRow.createCell(2).setCellValue(pdf.get(i).getWeight());
-                hssfRow.createCell(3).setCellValue(pdf.get(i).getOscillationIndex());
-                hssfRow.createCell(4).setCellValue(pdf.get(i).getServiceFactor());
-                hssfRow.createCell(5).setCellValue(pdf.get(i).getEffectiveServiceFactor());
-                hssfRow.createCell(6).setCellValue(pdf.get(i).getDisspositionFlaggedDate());//category ? categoryToDto(exercise.getCategory()) : null
-                hssfRow.createCell(7).setCellValue(pdf.get(i).getDisspositionEntryDate());
-                hssfRow.createCell(8).setCellValue(pdf.get(i).getDisposition());
-                hssfRow.createCell(9).setCellValue(pdf.get(i).getWeeksInCurrentDisposition());
-                if (pdf.get(i).getDispositionComment() != null)hssfRow.createCell(10).setCellValue(String.join("\n", pdf.get(i).getDispositionComment()));
+                if(pdf.get(i).getAttributesContains().contains("AssetType"))
+                    hssfRow.createCell(1).setCellValue(pdf.get(i).getAssetType());
+                if(pdf.get(i).getAttributesContains().contains("Weight"))
+                    hssfRow.createCell(2).setCellValue(pdf.get(i).getWeight());
+                if(pdf.get(i).getAttributesContains().contains("OscillationIndex"))
+                    hssfRow.createCell(3).setCellValue(pdf.get(i).getOscillationIndex());
+                if(pdf.get(i).getAttributesContains().contains("ServiceFactor"))
+                    hssfRow.createCell(4).setCellValue(pdf.get(i).getServiceFactor());
+                if(pdf.get(i).getAttributesContains().contains("EffectiveServiceFactor"))
+                    hssfRow.createCell(5).setCellValue(pdf.get(i).getEffectiveServiceFactor());
+                if(pdf.get(i).getAttributesContains().contains("DisspositionFlaggedDate"))
+                    hssfRow.createCell(6).setCellValue(pdf.get(i).getDisspositionFlaggedDate());
+                if(pdf.get(i).getAttributesContains().contains("DisspositionEntryDate"))
+                    hssfRow.createCell(7).setCellValue(pdf.get(i).getDisspositionEntryDate());
+                if(pdf.get(i).getAttributesContains().contains("Disposition"))
+                    hssfRow.createCell(8).setCellValue(pdf.get(i).getDisposition());
+                if(pdf.get(i).getAttributesContains().contains("WeeksInCurrentDisposition"))
+                    hssfRow.createCell(9).setCellValue(pdf.get(i).getWeeksInCurrentDisposition());
+                if (pdf.get(i).getAttributesContains().contains("DispositionComment"))
+                    hssfRow.createCell(10).setCellValue(String.join("\n", pdf.get(i).getDispositionComment()));
 
             }
 
