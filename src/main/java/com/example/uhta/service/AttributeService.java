@@ -1,11 +1,10 @@
 package com.example.uhta.service;
 
-import com.example.uhta.LukoilRepos.ControllerResultCustom;
 import com.example.uhta.model.requestModel.AttributeModel;
 import com.example.uhta.model.requestModel.PlateModel;
 import com.example.uhta.LukoilRepos.ControllerResultRepos;
 import com.example.uhta.SubRepos.AttributeRepository;
-import com.example.uhta.processDocRepos.AnalysisCastomRepos;
+import com.example.uhta.processDocRepos.AnalysisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +20,7 @@ public class AttributeService {
     @Autowired
     ControllerResultRepos controllerResultRepos;
     @Autowired
-    AnalysisCastomRepos analysisCastomRepos;
+    AnalysisRepository analysisRepository;
 
     public List<AttributeModel> GetAllAttribute()
     {
@@ -31,11 +30,14 @@ public class AttributeService {
     }
     public List<PlateModel> GetAllPlates(){
         List<PlateModel> plateModelList = new ArrayList<>();
-        List<PlateModel> plateModels = analysisCastomRepos.GetPlates();
+        List<PlateModel> plateModels = analysisRepository.findAll().stream()
+                .map(ParserAndConvertor::AnalysisToPlateModel)
+                .distinct()
+                .toList();
         for (PlateModel plateModel :plateModels){
             if (plateModel.getId() == 15) plateModelList.add(plateModel);
         }
-        return plateModelList;
+        return plateModelList.stream().map(ParserAndConvertor::AnalysisToPlateModelShrot).toList();
     }
 
 

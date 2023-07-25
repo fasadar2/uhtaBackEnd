@@ -39,11 +39,18 @@ public class ParserAndConvertor {
                 .build();
     }
     public  PlateModel AnalysisToPlateModel(Analysis analysis){
-        String title = analysis.getName()
+        return PlateModel.builder()
+                .id(analysis.getProjectID().getId())
+                .title(analysis.getName())
+                .description("null")
+                .build();
+    }
+    public  PlateModel AnalysisToPlateModelShrot(PlateModel plateModel){
+        String title = plateModel.getTitle()
                 .substring(11);
         title = title.substring(0, (title.length() - 1) / 2 );
         return PlateModel.builder()
-                .id(analysis.getProjectID().getId())
+                .id(plateModel.getId())
                 .title(title)
                 .description("null")
                 .build();
