@@ -6,6 +6,7 @@ import com.example.uhta.entity.uhtaDb.Pattern;
 import com.example.uhta.entity.uhtaDb.User;
 import com.example.uhta.model.PdfModel;
 import com.example.uhta.model.UserModel;
+import com.example.uhta.model.reciveModel.UserModelRecive;
 import com.example.uhta.model.requestModel.AttributeModel;
 import com.example.uhta.model.requestModel.PatternModelReq;
 import com.example.uhta.model.requestModel.PlateModel;
@@ -60,6 +61,12 @@ public class ParserAndConvertor {
         return UserModel.builder()
                 .id(user.getId())
                 .name(user.getFio())
+                .build();
+    }
+    public UserModelRecive UserToUserModelRecive(User user){
+        return UserModelRecive.builder()
+                .login(user.getLogin())
+                .password(user.getPassword())
                 .build();
     }
     public List<PdfModel> RegularReportToPdfModel(
