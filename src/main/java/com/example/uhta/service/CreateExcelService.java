@@ -19,7 +19,6 @@ public class CreateExcelService {
 
             Field[] fields = pdf.get(0).getClass().getDeclaredFields();
 
-
             HSSFRow rowHeads = sheet.createRow((short) 0);
             for(int i = 0; i < fields.length; i++)
                 rowHeads.createCell(i).setCellValue(fields[i].getName());
@@ -38,9 +37,9 @@ public class CreateExcelService {
                     hssfRow.createCell(4).setCellValue(pdf.get(i).getServiceFactor());
                 if(pdf.get(i).getAttributesContains().contains("EffectiveServiceFactor"))
                     hssfRow.createCell(5).setCellValue(pdf.get(i).getEffectiveServiceFactor());
-                if(pdf.get(i).getAttributesContains().contains("DisspositionFlaggedDate"))
+                if(pdf.get(i).getAttributesContains().contains("DispositionFlaggedDate"))
                     hssfRow.createCell(6).setCellValue(pdf.get(i).getDisspositionFlaggedDate());
-                if(pdf.get(i).getAttributesContains().contains("DisspositionEntryDate"))
+                if(pdf.get(i).getAttributesContains().contains("DispositionEntryDate"))
                     hssfRow.createCell(7).setCellValue(pdf.get(i).getDisspositionEntryDate());
                 if(pdf.get(i).getAttributesContains().contains("Disposition"))
                     hssfRow.createCell(8).setCellValue(pdf.get(i).getDisposition());

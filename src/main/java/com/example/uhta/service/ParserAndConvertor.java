@@ -39,10 +39,11 @@ public class ParserAndConvertor {
     }
     public  PlateModel ControllerResultToPlateModel(ControllerResults controllerResults){
         String title = controllerResults.getAnalysis()
-                .substring(10);
+                .substring(11);
+        title = title.substring(0, (title.length() - 1) / 2 );
         return PlateModel.builder()
-                .id(controllerResults.getControllerID())
-                .title(title.substring(-1/2))
+                .id(0)
+                .title(title)
                 .description("null")
                 .build();
     }

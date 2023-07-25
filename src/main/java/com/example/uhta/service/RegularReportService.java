@@ -13,29 +13,30 @@ import java.util.List;
 
 @Service
 public class RegularReportService {
-    @Autowired
-    CreateExcelService createPDF;
-    @Autowired
-    SendMailFileService sendMailFileService;
-    @Autowired
-    ControllerResultRepos controllerResultRepos;
-    public void CreateRegularReport(RegularReportRecive recive){
-        try{
+	@Autowired
+	CreateExcelService createPDF;
+	@Autowired
+	SendMailFileService sendMailFileService;
+	@Autowired
+	ControllerResultRepos controllerResultRepos;
+
+	public void CreateRegularReport(RegularReportRecive recive) {
+		try {
+			Instant endDateParsed = ParserAndConvertor.ParseToInstant(recive.getDateFinish());
+			Instant startDateParsed = ParserAndConvertor.ParseToInstant(recive.getDateStart());
+			List<ControllerResults> report = controllerResultRepos.getControllerResultByEndTimeBetween(startDateParsed,
+																																																 endDateParsed);
+			List<PdfModel> pdf = ParserAndConvertor.RegularReportToPdfModel(report, recive.getAttributes(),
+																																			recive.getPlates());
+			createPDF.createSheet(pdf);
+
+			sendMailFileService.SendPdfOnMail(recive.getEmails());
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
 
-            Instant endDateParsed = ParserAndConvertor.ParseToInstant(recive.getDateFinish());
-            Instant startDateParsed =ParserAndConvertor.ParseToInstant(recive.getDateStart());
-            List<ControllerResults> report =   controllerResultRepos.getControllerResultByEndTimeBetween(startDateParsed,endDateParsed);
-            List<PdfModel> pdf = ParserAndConvertor.RegularReportToPdfModel(report,recive.getAttributes(),recive.getPlates());
-            createPDF.createSheet(pdf);
-
-            sendMailFileService.SendPdfOnMail(recive.getEmails());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
-    }
+	}
 
 
 }
