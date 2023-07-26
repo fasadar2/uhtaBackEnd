@@ -144,10 +144,10 @@ public class ParserAndConvertor {
                 }
                 pdf.setAssetType(result.getAnalysis());
                 pdf.setName(name);
+                pdf.setAttributesContains(attributeContains);
+                pdfList.add(pdf);
             }
-            pdf.setAttributesContains(attributeContains);
 
-            pdfList.add(pdf);
         }
         return pdfList;
     }
