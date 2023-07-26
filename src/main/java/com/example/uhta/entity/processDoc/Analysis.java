@@ -38,7 +38,7 @@ public class Analysis {
     private Instant createdDate;
 
     @Column(name = "CheckedOut", nullable = false)
-    private Boolean checkedOut = false;
+    private Boolean checkedOut;
 
     @Column(name = "CheckedOutBy", length = 100)
     private String checkedOutBy;
@@ -47,10 +47,10 @@ public class Analysis {
     private byte[] viewData;
 
     @Column(name = "IsTemplated", nullable = false)
-    private Boolean isTemplated = false;
+    private Boolean isTemplated;
 
     @Column(name = "IsRunning", nullable = false)
-    private Boolean isRunning = false;
+    private Boolean isRunning;
 
     @Column(name = "LastModified")
     private Instant lastModified;

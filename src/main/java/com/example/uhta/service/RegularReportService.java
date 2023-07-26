@@ -30,7 +30,7 @@ public class RegularReportService {
 																																			recive.getPlates());
 			String name = createPDF.createSheet(pdf);
 
-			sendMailFileService.SendPdfOnMail(recive.getEmails(),name);
+			sendMailFileService.SendPdfOnMail(recive.getEmails(), name);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
