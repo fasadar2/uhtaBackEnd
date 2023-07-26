@@ -28,9 +28,9 @@ public class RegularReportService {
 																																																 endDateParsed);
 			List<PdfModel> pdf = ParserAndConvertor.RegularReportToPdfModel(report, recive.getAttributes(),
 																																			recive.getPlates());
-			createPDF.createSheet(pdf);
+			String name = createPDF.createSheet(pdf);
 
-			sendMailFileService.SendPdfOnMail(recive.getEmails());
+			sendMailFileService.SendPdfOnMail(recive.getEmails(),name);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

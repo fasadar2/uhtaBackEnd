@@ -11,7 +11,7 @@ import java.util.Properties;
 import javax.activation.*;
 @Service
 public class SendMailFileService {
-    public void SendPdfOnMail(List<String> emails)
+    public void SendPdfOnMail(List<String> emails,String fileName)
     {
         final String from = "createreport@mail.ru";
         final String password = "kQb3DGd8bJEu6pmhcPdv";//K1lnk2tJNhQDAa4TfsqX
@@ -60,7 +60,7 @@ for (String email :emails) {
 
         // Часть вторая вложения
         messageBodyPart = new MimeBodyPart();
-        String filename = ".\\Report.xls";
+        String filename = ".\\"+fileName;
         DataSource source = new FileDataSource(filename);
         messageBodyPart.setDataHandler(new DataHandler(source));
         messageBodyPart.setFileName(filename);

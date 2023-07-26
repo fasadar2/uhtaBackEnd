@@ -8,11 +8,15 @@ import org.springframework.stereotype.Service;
 
 import java.io.FileOutputStream;
 import java.lang.reflect.Field;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class CreateExcelService {
-    public void createSheet(List<PdfModel> pdf) {
+    public String createSheet(List<PdfModel> pdf) {
+        Date dateDate = new Date();
+        String dateString = dateDate.toString();
+        String filename = "Report.xls"+dateString;
         try {
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheet = workbook.createSheet("January");
@@ -49,16 +53,18 @@ public class CreateExcelService {
 
             }
 
-            String filename = "Report.xls";
+
             FileOutputStream fileOut = new FileOutputStream(filename);
             workbook.write(fileOut);
             fileOut.close();
             workbook.close();
 
             System.out.println("Excel file has been generated successfully.");
+
         } catch(Exception e) {
             e.printStackTrace();
         }
+        return filename;
     }
 
 }
