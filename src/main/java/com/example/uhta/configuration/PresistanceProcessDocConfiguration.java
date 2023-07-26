@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 
 @Configuration
-@PropertySources({@PropertySource(value ="classpath:persistence-multiple-db-boot1.properties" )})
+@PropertySources({@PropertySource(value = "classpath:multiDB.properties")})
 @EnableJpaRepositories(
         basePackages = "com.example.uhta.processDocRepos",
         entityManagerFactoryRef = "processDocDbEntityManager",

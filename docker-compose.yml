@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  app-backend:
+    build:
+      context: webserver
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      SQLSERVER_URL_ProcessDocResults_url: "jdbc:sqlserver://FASADAR:1433;encrypt=true;trustServerCertificate=true;database=ProcessDocResults"
+      SQLSERVER_URL_ProcessDoc_url: "jdbc:sqlserver://FASADAR:1433;encrypt=true;trustServerCertificate=true;database=ProcessDoc"
+      SQLSERVER_URL_SupportDB_url: "jdbc:sqlserver://FASADAR:1433;encrypt=true;trustServerCertificate=true;database=uhtaDB"
+      SQLSERVER_USER: "fasadar1"
+      SQLSERVER_PASSWORD: "fasadar"
+    networks:
+      - frontend
+
+  app-client:
+    build:
+      context: webui
+      dockerfile: Dockerfile
+    ports:
+      - "9090:80"
+    restart: always
+    depends_on:
+      - app-backend
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    driver: "bridge"
