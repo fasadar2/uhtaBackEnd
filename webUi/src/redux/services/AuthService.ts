@@ -9,7 +9,7 @@ import { RegisterFail, LoginFail } from "../actions/authActions";
 import { User } from "../../models/UserModel";
 import { clientActions } from "../slices/clientslice";
 
-const API_URL = "http://localhost:8090/auth/";
+const API_URL = "api/auth/";
 
 class AuthService {
   register(reg: RegistrationModel) {

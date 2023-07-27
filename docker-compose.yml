@@ -15,6 +15,7 @@ services:
     networks:
       - frontend
 
+
   app-client:
     build:
       context: webui
@@ -30,3 +31,4 @@ services:
 networks:
   frontend:
     driver: "bridge"
+

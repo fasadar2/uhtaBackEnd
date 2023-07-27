@@ -4,7 +4,7 @@ import { ReportModel } from "../../models/ReportModel";
 import { Observable } from "rxjs";
 import { AjaxResponse, ajax } from "rxjs/ajax";
 
-const API_URL = "http://localhost:8090/pattern/";
+const API_URL = "api/pattern/";
 class PatternService {
   getPatterns() {
     const patterns: Observable<AjaxResponse<PatternModel[]>> = ajax(

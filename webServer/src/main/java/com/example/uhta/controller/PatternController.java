@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/pattern")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestControllerAdvice
 @Tag(name = "PatternApi")
 public class PatternController {
